@@ -1,0 +1,19 @@
+[
+  {
+    "username": "erans",
+    "fullName": "eran sevil",
+    "isAdmin": "true",
+    "password": "777"
+  },
+  {
+    "username": "inbals",
+    "fullName": "inbal sevil",
+    "isAdmin": "false",
+    "password": "888"
+  },
+  {
+    "username": "ernas",
+    "password": "777",
+    "fullName": "eran sevil test"
+  }
+]
