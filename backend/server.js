@@ -20,8 +20,19 @@ app.use(session({
     secret: 'hta',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false }
+    cookie: { secure: true },
  }))
+
+ if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.resolve(__dirname, 'public')))
+} else {
+    const corsOptions = {
+        origin: ['http://127.0.0.1:3000', 'http://localhost:3000', 'http://127.0.0.1:3030', 'http://localhost:3030'],///////////////////////////////////////////////////////////////IFAT USED 3000
+        credentials: true
+    }
+    app.use(cors(corsOptions))
+}
+
  
 app.use('/api/candy', candyRoutes)
 app.use('/api/user', userRoutes)

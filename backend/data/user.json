@@ -1,19 +1,14 @@
 [
   {
-    "username": "erans",
-    "fullName": "eran sevil",
+    "userName": "erans",
+    "email": "eransevil@gmail.com",
     "isAdmin": "true",
     "password": "777"
   },
   {
-    "username": "inbals",
-    "fullName": "inbal sevil",
+    "userName": "inbals",
+    "email": "inbalsevil@gmail.com",
     "isAdmin": "false",
     "password": "888"
-  },
-  {
-    "username": "ernas",
-    "password": "777",
-    "fullName": "eran sevil test"
   }
 ]

@@ -10,8 +10,11 @@ export default function CandyPreview({ candy }) {
                     <Card.Text>
                        <span className="candy-price"> {candy.price}$ </span>
                     </Card.Text>
+                    {/* <Card.Text>
+                       <span className="in-stock"> {candy.inStock? 'In Stock' : 'Out of stock'} </span>
+                    </Card.Text> */}
                 </Card.Body>
-                    <Button variant="outline-primary">Add to cart</Button>
+                    <Button title ={`${candy.inStock? 'In stack' : 'Out of Stock'}`} className={`${candy.inStock}`} variant="outline-success">{`${candy.inStock? 'Add to cart' : 'Out of Stock'}`}</Button>
             </Card>
 
         </div>

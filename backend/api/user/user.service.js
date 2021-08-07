@@ -1,19 +1,19 @@
 const gUser = require('../../data/user.json')
 
 
-function login(username, password) {
-        const user = gUser.find(user => user.username === username && user.password === password)
+function login(userName, password) {
+        const user = gUser.find(user => user.userName === userName && user.password === password)
     if (user){
-        const {username, isAdmin, fullName} = user
-        const userToReturn = {username, isAdmin, fullName}
+        const {userName, isAdmin, email} = user
+        const userToReturn = {userName, isAdmin, email}
         return Promise.resolve(userToReturn)
     } 
-    return Promise.reject('no such username or password')
+    return Promise.reject('no such userName or password')
 }
 
-function signup(username, password, fullName) {
-    console.log(username, password, fullName)
-    const user = {username, password, fullName}
+function signup(userName, password, email) {
+    console.log(userName, password, email)
+    const user = {userName, password, email}
     gUser.push(user)
     return _saveuserToFile()
 }

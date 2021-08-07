@@ -5,9 +5,10 @@ const router = express.Router()
 
 
 router.post('/login', async (req, res) =>{
-    const { username, password } = req.body
+    console.log('req.body', req.body)
+    const { userName, password } = req.body
     try {
-        const user = await userService.login(username, password)
+        const user = await userService.login(userName, password)
         req.session.user = user
         res.json(user)
     } catch (err) {
@@ -17,11 +18,12 @@ router.post('/login', async (req, res) =>{
 })
  
  router.post ('/signup', async (req, res)=> {
+     console.log('req.body', req.body)
     try {
-        const { username, password, fullName } = req.body
+        const { userName, password, email } = req.body
         // Never log passwords
-        const account = await userService.signup(username, password, fullName)
-        const user = await userService.login(username, password)
+        const account = await userService.signup(userName, password, email)
+        const user = await userService.login(userName, password)
         req.session.user = user
         res.json(user)
     } catch (err) {
