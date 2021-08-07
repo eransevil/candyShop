@@ -1,6 +1,18 @@
 import React from 'react'
 import {Card , Button} from 'react-bootstrap';
-export default function CandyPreview({ candy }) {
+export default function CandyPreview({ candy, userCart, setUserCart }) {
+
+    const onAddToCart = (candy) =>{
+        // console.log(candy)
+        const userCopy = Array.from (userCart)
+        // setUserCart (...userCopy , candy)
+        setUserCart (userCopy => [...userCopy, candy])
+        console.log('userCart' , userCart)
+    }
+
+    // setMyArray(oldArray => [...oldArray, newElement]);
+
+
     return (
         <div className="candy-card">
             <Card>
@@ -14,7 +26,7 @@ export default function CandyPreview({ candy }) {
                        <span className="in-stock"> {candy.inStock? 'In Stock' : 'Out of stock'} </span>
                     </Card.Text> */}
                 </Card.Body>
-                    <Button title ={`${candy.inStock? 'In stack' : 'Out of Stock'}`} className={`${candy.inStock}`} variant="outline-success">{`${candy.inStock? 'Add to cart' : 'Out of Stock'}`}</Button>
+                    <Button onClick={() => {onAddToCart(candy)}} title ={`${candy.inStock? 'In stack' : 'Out of Stock'}`} className={`${candy.inStock}`} variant="outline-success">{`${candy.inStock? 'Add to cart' : 'Out of Stock'}`}</Button>
             </Card>
 
         </div>

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { HashRouter as Router, NavLink } from 'react-router-dom';
 
 export default function header({loggedInUser, handleLogin}) {
-  console.log(loggedInUser)
+  console.log('ss',loggedInUser)
 
   const doLogOut = async ()  => {
      await axios.post(`${BASE_URL}user/logout`)
@@ -28,6 +28,7 @@ export default function header({loggedInUser, handleLogin}) {
 {         loggedInUser &&<a onClick={doLogOut} className="signup-link nav-link-item">Signout</a>}
           <NavLink className="cart-link nav-link-item" exact to="/Cart" activeClassName="active-nav">🛒</NavLink>
         </Router>
+        {loggedInUser && <div className="hello-msg"> Hello {loggedInUser.userName}</div>}
 
       </div>
 

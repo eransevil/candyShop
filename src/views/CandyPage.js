@@ -3,8 +3,7 @@ import CandyPreview from '../cmps/CandyPreview'
 import { useEffect, useState } from 'react'
 
 
-export default function CandyPage({ candys }) {
-
+export default function CandyPage({ candys, setUserCart, userCart }) {
     const [filter, setFilter] = useState({ term: '' })
     const [candysForDisply, setCandysForDisply] = useState([...candys])
 
@@ -25,7 +24,7 @@ export default function CandyPage({ candys }) {
             <input className="search" placeholder="Search" type="Search" id="Search" name="Search" value={filter.term} onChange={handleChange} />
             <div className="candy-container">
                 {candysForDisply.map((candy) => {
-                    return <CandyPreview key={candy._id} candy={candy} />
+                    return <CandyPreview setUserCart={setUserCart} userCart={userCart} key={candy._id} candy={candy} />
                 })}
             </div>
         </div>

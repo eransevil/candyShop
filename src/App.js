@@ -15,6 +15,7 @@ import { HashRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 function App() {
   const [candys, setCandys] = useState([])
   const [loggedInUser, setLoggedInUser] = useState(null)
+  const [userCart, setUserCart] = useState([])
 
 
   useEffect(() => {
@@ -33,28 +34,29 @@ function App() {
 
   const PrivateRoute = (props) => {
     console.log('props', props)
-    return props.loggedInUser ? <Route  {...props} component={props.component} path={props.path} /> : <Redirect to={ { pathname:"/Signup", state:{loggedInUser:props.loggedInUser} ,  handleLogin: setLoggedInUser ,
-  }}/>
+    return props.loggedInUser ? <Route  {...props} component={props.component} path={props.path} /> : <Redirect to={{
+      pathname: "/Signup", state: { loggedInUser: props.loggedInUser }, handleLogin: setLoggedInUser
+    }} />
   }
 
 
   return (
     <div className="App main-layout">
       <Router>
-        <Header loggedInUser={loggedInUser} handleLogin={setLoggedInUser}  />
+        <Header loggedInUser={loggedInUser} handleLogin={setLoggedInUser} />
         <Switch>
           {<PrivateRoute loggedInUser={loggedInUser} component={Contact} path='/Contact#/' />}
           {<PrivateRoute loggedInUser={loggedInUser} exact component={Home} path='/' />}
           {<PrivateRoute loggedInUser={loggedInUser} exact component={Contact} path='/Contact' />}
-          {<PrivateRoute loggedInUser={loggedInUser} exact component={Cart} path='/Cart' />}
-          {<Route exact  component={Signup} path='/Signup' />}
+          {<Route path='/Cart' render={(props) => <Cart userCart={userCart} loggedInUser={loggedInUser}  {...props} />} />}
+          {<Route exact component={Signup} path='/Signup' />}
           {/* {<Route  path="/Signup" render={(props) => }} */}
           {/* <Route path="Signup" render={(props) => <Signup {...props}/>}/> */}
 
 
           <PrivateRoute loggedInUser={loggedInUser} path="/CandyPage"
             render={(props) => (
-              <CandyPage candys={candys} {...props} />)}
+              <CandyPage setUserCart={setUserCart} userCart={userCart} candys={candys} {...props} />)}
             exact={true} />
 
         </Switch>
