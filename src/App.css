@@ -144,7 +144,7 @@ iframe {
 
 .cart-link {
     position: absolute;
-    right: 90px;
+    right: 110px;
     top: 5px;
     padding-right: 19px;
     text-decoration: none !important;
@@ -153,7 +153,7 @@ iframe {
 
 .signup-link {
     position: absolute;
-    right: 150px
+    right: 170px
 }
 
 .app-header {
@@ -266,19 +266,7 @@ th{
     color: black;
 }
 
-.cart-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    width: 100%;
-    text-align: center;
-}
 
-/* .cart-btn{
-    justify-self: flex-end;
-    align-self:center;
-} */
 
 .cart-container > * {
     justify-self: center;
@@ -288,10 +276,63 @@ th{
 .hello-msg{
     margin-left: 20px;
     position: absolute;
-    right: 0;
+    right: 12px ;
     text-align: center;
     display: flex;
     justify-content: center;
     align-self: center;
-    width: 100%;
+    text-align: center;
+    /* width: 100%; */
+}
+
+.cart-container{
+    background-color: rgb(228, 228, 228);
+    width: 750px;
+    text-align: center;
+}
+
+.cart-container > tr > td {
+    background-color: rgb(238, 235, 235);
+    width: 250px;
+}
+
+
+.main-row-cart{
+    background-color: lightcoral;
+    /* width: 800px; */
+}
+.main-row-cart > th{
+    background-color: lightcoral;
+    width: 250px;
+    /* width: 800px; */
+}
+
+.sum-section{
+    display: flex;
+    flex-direction: column;
+    justify-self: flex-end;
+    align-self: flex-end;
+    margin-top: 20px;
+    background-color: rgb(238, 235, 235);
+    width: 750px;
+    position: relative;
+    right: 0px;
+    font-size: 1.4rem;
+
+}
+.sum-section > *{
+    text-align: left;
+    margin-left: 97px;
+    margin-top: 10px;
+
+}
+.sum-item{
+    position: absolute;
+    right: 100px
+}
+
+.pay-btn{
+    margin:0 auto;
+    text-align:center;
+    margin-bottom: 10px;
 }

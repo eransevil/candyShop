@@ -1,13 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import axios from 'axios';
 
 
 export default function Signup(props) {
-    console.log(props)
-
-
     const BASE_URL = process.env.NODE_ENV === 'production'
         ? '/api/'
         : '//localhost:3030/api/'
@@ -42,9 +38,7 @@ export default function Signup(props) {
     }
 
     const doSignup = async () => {
-        console.log(credentials)
         const user = await axios.post(`${BASE_URL}api/user/signup`, credentials)
-        console.log(user.data)
         if (user.data) {
             await props.location.handleLogin(user.data)
             props.history.push('/CandyPage')
@@ -52,9 +46,7 @@ export default function Signup(props) {
     }
 
     const doLogin = async () => {
-        console.log(loginCredentials)
         const user = await axios.post(`${BASE_URL}user/login`, loginCredentials)
-        console.log(user.data)
         if (user.data) {
             await props.location.handleLogin(user.data)
             props.history.push('/CandyPage')

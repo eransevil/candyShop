@@ -5,7 +5,6 @@ const router = express.Router()
 
 
 router.post('/login', async (req, res) =>{
-    console.log('req.body', req.body)
     const { userName, password } = req.body
     try {
         const user = await userService.login(userName, password)
@@ -16,9 +15,14 @@ router.post('/login', async (req, res) =>{
     
 }
 })
+
+router.post('/submitCart' , async(req,res) =>{
+    const {userName} = req.body
+    _saveLogToFile(userName , ' pay for the candies')
+    res.json('done')
+})
  
  router.post ('/signup', async (req, res)=> {
-     console.log('req.body', req.body)
     try {
         const { userName, password, email } = req.body
         // Never log passwords
@@ -34,15 +38,24 @@ router.post('/login', async (req, res) =>{
 
 router.post('/logout', async (req, res) => {
     try {
-        console.log('req.session before', req.session)
+        const {userName} = req.body 
+        _saveLogToFile(userName , ' loggedOut')
         req.session.destroy()
-        console.log('req.session after:', req.session )
         res.send({ msg: 'Logged out successfully' })
     } catch (err) {
         res.status(500).send({ err: 'Failed to logout' })
     }
 })
-
-
+const path = ('../log/log.txt')
+function _saveLogToFile(user, action) {
+    return new Promise((resolve, reject) => {
+        const fs = require('fs')
+        const data =  user + ' ' +  action + ' at: ' +  new Date().toLocaleString() + '||' +'\n'  
+        fs.appendFileSync('api/log/log.txt',data , "UTF-8",{'flags': 'a+'} , (err) => {
+            if (err) reject(err)
+            else resolve()
+        })
+    })
+}
 
 module.exports = router

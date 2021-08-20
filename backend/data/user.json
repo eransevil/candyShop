@@ -2,13 +2,13 @@
   {
     "userName": "erans",
     "email": "eransevil@gmail.com",
-    "isAdmin": "true",
+    "isAdmin": true,
     "password": "777"
   },
   {
     "userName": "inbals",
     "email": "inbalsevil@gmail.com",
-    "isAdmin": "false",
+    "isAdmin": false,
     "password": "888"
   }
 ]

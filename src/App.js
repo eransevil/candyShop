@@ -7,33 +7,38 @@ import Home from './views/Home'
 import Contact from './views/Contact'
 import Signup from './views/Signup'
 import Cart from './views/Cart'
+import Admin from './views/Admin'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react'
 import { HashRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 
 
 function App() {
-  const [candys, setCandys] = useState([])
+  const [candies, setCandies] = useState([])
   const [loggedInUser, setLoggedInUser] = useState(null)
   const [userCart, setUserCart] = useState([])
 
+  const BASE_URL = process.env.NODE_ENV === 'production'
+  ? '/api/'
+  : '//localhost:3030/api/'
+
+
 
   useEffect(() => {
-    const getCandys = async () => {
-      const candysFromServer = await fetchCandys();
-      setCandys(candysFromServer);
+    const getCandies = async () => {
+      const candiesFromServer = await fetchCandies();
+      setCandies(candiesFromServer);
     }
-    getCandys();
+    getCandies();
   }, [])
 
-  const fetchCandys = async () => {
-    const res = await fetch('http://localhost:3030/api/candy')
+  const fetchCandies = async () => {
+    const res = await fetch(`${BASE_URL}candy`)
     const data = await res.json()
     return data
   }
 
   const PrivateRoute = (props) => {
-    console.log('props', props)
     return props.loggedInUser ? <Route  {...props} component={props.component} path={props.path} /> : <Redirect to={{
       pathname: "/Signup", state: { loggedInUser: props.loggedInUser }, handleLogin: setLoggedInUser
     }} />
@@ -50,13 +55,14 @@ function App() {
           {<PrivateRoute loggedInUser={loggedInUser} exact component={Contact} path='/Contact' />}
           {<Route path='/Cart' render={(props) => <Cart userCart={userCart} loggedInUser={loggedInUser}  {...props} />} />}
           {<Route exact component={Signup} path='/Signup' />}
+          {<Route exact component={Admin} path='/Admin' />}
           {/* {<Route  path="/Signup" render={(props) => }} */}
           {/* <Route path="Signup" render={(props) => <Signup {...props}/>}/> */}
 
 
           <PrivateRoute loggedInUser={loggedInUser} path="/CandyPage"
             render={(props) => (
-              <CandyPage setUserCart={setUserCart} userCart={userCart} candys={candys} {...props} />)}
+              <CandyPage setUserCart={setUserCart} userCart={userCart} candies={candies} {...props} />)}
             exact={true} />
 
         </Switch>

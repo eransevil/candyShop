@@ -6,6 +6,7 @@ const cors = require('cors')
 
 const candyRoutes = require ('./api/candy/candy.controller.js')
 const userRoutes = require ('./api/user/user.controller.js')
+const logRoutes = require ('./api/log/log.js')
 
 const app = express()
 const port = process.env.PORT || 3030 
@@ -20,7 +21,9 @@ app.use(session({
     secret: 'hta',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: true },
+    cookie: { secure: false },
+    maxAge: 1*60*60*10000
+
  }))
 
  if (process.env.NODE_ENV === 'production') {
@@ -36,6 +39,7 @@ app.use(session({
  
 app.use('/api/candy', candyRoutes)
 app.use('/api/user', userRoutes)
+app.use('/api/log', logRoutes)
 
 
 app.listen(port, () => {

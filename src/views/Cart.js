@@ -1,35 +1,68 @@
 import React from 'react'
-import Alert from 'react-bootstrap/Alert';
-export default function Cart({ userCart }) {
-    console.log('userCarttttttt', userCart)
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 
-    const submitCart = () => {
-        // <Alert severity="success">This is a success alert — check it out!</Alert>
-        alert ('succes!')
+export default function Cart({ userCart , loggedInUser}) {
+    console.log(loggedInUser)
+
+    const BASE_URL = process.env.NODE_ENV === 'production'
+    ? '/api/'
+    : '//localhost:3030/api/'
+
+    const [sumPrice, setSumPrice] = useState(0)
+
+    const tax = () => {
+        const temp = sumPrice * 1.17
+        return parseInt(temp - sumPrice)
+    }
+
+    const total = () => {
+        const taxAmount = tax()
+
+        return taxAmount + sumPrice
+    }
+
+    const submitCart = async () => {
+        await axios.post(`${BASE_URL}user/submitCart`, loggedInUser) 
+        alert('success!')
 
     }
 
+
+    useEffect(() => {
+        const sum = userCart.reduce((acc, candy) => {
+            return acc + parseInt(candy.price)
+        }, 0)
+        setSumPrice(sum)
+    }, [userCart])
+
     return (
         <div className="cart-container">
-            <tr> 
+            <h1>🛒 MY CART 🛒</h1>
+            <tr className="main-row-cart">
                 <th> Image</th>
-                <th> Name</th>
+                <th> Product</th>
                 <th> Price</th>
             </tr>
-            {userCart.map((item) => {
-                return <tr> 
-                   <td>  <img className="item-in-cart-image" src={item.url}/>  </td>
-                   <td> {item.name} </td>
-                   <td> {item.price} $ </td>
-                    </tr>
-            })}
 
-        <button onClick={submitCart} className="special-btn cart-btn"> Buy</button>
+            {userCart.length? userCart.map((item,idx) => {
+                return <tr key={idx}>
+                    <td>  <img className="item-in-cart-image" src={item.url} />  </td>
+                    <td> {item.name} </td>
+                    <td> {item.price} $ </td>
+                </tr>
+            }): <h2> No items yet</h2>}
+            <div className="sum-section">
+                <span>  Subtotal  <span className="sum-item"> {sumPrice} $ </span>   </span>
+                <span> Tax <span className="sum-item">  {tax()} $ </span> </span>
+                <span> Total <span className="sum-item"> {total()} $ </span>  </span>
+                <button onClick={submitCart} className="special-btn cart-btn pay-btn"> Buy</button>
+            </div>
         </div>
     )
 
 
-    // {candysForDisply.map((candy) => {
+    // {candiesForDisply.map((candy) => {
     // return <CandyPreview setUserCart={setUserCart} userCart={userCart} key={candy._id} candy={candy} />
     // })}
 }

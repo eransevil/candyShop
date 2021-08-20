@@ -1,12 +1,6 @@
 const gCandy = require('../../data/candy.json')
 
 function query(filterBy ={}) {
-    // const regex = new RegExp(filterBy.name, 'i')
-    // var candysForDisplay = gCandy.filter(candy => {
-    //     return regex.test(candy.name)
-    //         && (JSON.stringify(candy.inStock) === filterBy.inStock || filterBy.inStock === 'all' || !filterBy)
-
-    // })
     return Promise.resolve(gCandy);
 }
 
@@ -28,7 +22,7 @@ function save(candy) {
             candy.inStock = true
         gCandy.unshift(candy)
     }
-    return _savecandysToFile()
+    return _saveCandiesToFile()
         .then(() => candy)
 }
 
@@ -36,7 +30,7 @@ function remove(candyId) {
     const idx = gCandy.findIndex(candy => candy._id.toString() === candyId.toString())
     if (idx === -1) return Promise.reject('No Such candy')
     gCandy.splice(idx, 1)
-    return _savecandysToFile();
+    return _saveCandiesToFile();
 }
 
 
@@ -49,7 +43,7 @@ module.exports = {
     remove
 }
 
-function _savecandysToFile() {
+function _saveCandiesToFile() {
     return new Promise((resolve, reject) => {
         const fs = require('fs')
         fs.writeFile('data/candy.json', JSON.stringify(gCandy, null, 2), (err) => {

@@ -3,11 +3,8 @@ import {Card , Button} from 'react-bootstrap';
 export default function CandyPreview({ candy, userCart, setUserCart }) {
 
     const onAddToCart = (candy) =>{
-        // console.log(candy)
         const userCopy = Array.from (userCart)
-        // setUserCart (...userCopy , candy)
         setUserCart (userCopy => [...userCopy, candy])
-        console.log('userCart' , userCart)
     }
 
     // setMyArray(oldArray => [...oldArray, newElement]);

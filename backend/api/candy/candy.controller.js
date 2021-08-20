@@ -7,8 +7,8 @@ const router = express.Router()
 router.get('/', (req, res) => {
     const filterBy = req.query
     candyService.query(filterBy)
-        .then(candys => {
-            res.json(candys)
+        .then(candies => {
+            res.json(candies)
         })
 })
  
