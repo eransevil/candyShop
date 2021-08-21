@@ -3,12 +3,14 @@
     "userName": "erans",
     "email": "eransevil@gmail.com",
     "isAdmin": true,
-    "password": "777"
+    "password": "777",
+    "cart": []
   },
   {
     "userName": "inbals",
     "email": "inbalsevil@gmail.com",
     "isAdmin": false,
-    "password": "888"
+    "password": "888",
+    "cart": []
   }
 ]

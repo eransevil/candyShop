@@ -4,6 +4,7 @@ import Header from './cmps/Header'
 import Footer from './cmps/Footer'
 import CandyPage from './views/CandyPage'
 import Home from './views/Home'
+import Readme from './views/Readme'
 import Contact from './views/Contact'
 import Signup from './views/Signup'
 import Cart from './views/Cart'
@@ -22,6 +23,11 @@ function App() {
   ? '/api/'
   : '//localhost:3030/api/'
 
+  useEffect(() => {
+    console.log('here')
+    const user = localStorage.getItem('user')
+    if(user) setLoggedInUser(JSON.parse(user))
+  }, [])
 
 
   useEffect(() => {
@@ -53,7 +59,8 @@ function App() {
           {<PrivateRoute loggedInUser={loggedInUser} component={Contact} path='/Contact#/' />}
           {<PrivateRoute loggedInUser={loggedInUser} exact component={Home} path='/' />}
           {<PrivateRoute loggedInUser={loggedInUser} exact component={Contact} path='/Contact' />}
-          {<Route path='/Cart' render={(props) => <Cart userCart={userCart} loggedInUser={loggedInUser}  {...props} />} />}
+          {<PrivateRoute loggedInUser={loggedInUser} exact component={Readme} path='/Readme' />}
+          {<Route path='/Cart' render={(props) => <Cart userCart={userCart} loggedInUser={loggedInUser} setUserCart={setUserCart} {...props} />} />}
           {<Route exact component={Signup} path='/Signup' />}
           {<Route exact component={Admin} path='/Admin' />}
           {/* {<Route  path="/Signup" render={(props) => }} */}

@@ -12,9 +12,16 @@ function login(userName, password) {
 }
 
 function signup(userName, password, email) {
-    const user = {userName, password, email}
+    const user = {userName, password, email, 'cart':[]}
     _saveLogToFile (userName,  'signup in')
     gUser.push(user)
+    return _saveUserToFile()
+}
+
+function submitCart(email, cart){
+    const idx = gUser.findIndex(user => user.email === email)
+    console.log(idx)
+    gUser[idx]['cart'].push(cart)
     return _saveUserToFile()
 }
 
@@ -22,6 +29,7 @@ function signup(userName, password, email) {
 module.exports = {
     login,
     signup,
+    submitCart
 }
 
 

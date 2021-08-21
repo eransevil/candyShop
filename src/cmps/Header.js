@@ -7,7 +7,7 @@ export default function header({ loggedInUser, handleLogin }) {
 
   const doLogOut = async () => {
     await axios.post(`${BASE_URL}user/logout`, loggedInUser)
-
+    window.localStorage.clear(); //clear all localstorage
     handleLogin(null)
   }
 
@@ -24,6 +24,7 @@ export default function header({ loggedInUser, handleLogin }) {
           <NavLink className="nav-link-item" exact to="/CandyPage" activeClassName="active-nav">CandyPage</NavLink>
           <NavLink className="nav-link-item" to="/Contact" activeClassName="active-nav">Contact</NavLink>
           {loggedInUser && loggedInUser.isAdmin && <NavLink className="nav-link-item" to="/Admin" activeClassName="active-nav">Admin</NavLink>}
+          <NavLink className="nav-link-item" to="/Readme" activeClassName="active-nav">Readme</NavLink>
           {!loggedInUser && <NavLink className="signup-link nav-link-item" exact to="/Signup" activeClassName="active-nav">Signup</NavLink>}
           {loggedInUser && <a onClick={doLogOut} className="signup-link nav-link-item">Signout</a>}
           <NavLink className="cart-link nav-link-item" exact to="/Cart" activeClassName="active-nav">🛒</NavLink>

@@ -2,8 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-export default function Cart({ userCart , loggedInUser}) {
-    console.log(loggedInUser)
+export default function Cart({ userCart , loggedInUser, setUserCart}) {
 
     const BASE_URL = process.env.NODE_ENV === 'production'
     ? '/api/'
@@ -23,7 +22,10 @@ export default function Cart({ userCart , loggedInUser}) {
     }
 
     const submitCart = async () => {
-        await axios.post(`${BASE_URL}user/submitCart`, loggedInUser) 
+        const payload = {loggedInUser, userCart}
+        
+        await axios.post(`${BASE_URL}user/submitCart`, payload) 
+        setUserCart([])
         alert('success!')
 
     }

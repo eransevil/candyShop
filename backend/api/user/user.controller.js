@@ -17,8 +17,9 @@ router.post('/login', async (req, res) =>{
 })
 
 router.post('/submitCart' , async(req,res) =>{
-    const {userName} = req.body
-    _saveLogToFile(userName , ' pay for the candies')
+    const {loggedInUser, userCart} = req.body
+    _saveLogToFile(loggedInUser.userName , ' pay for the candies')
+    userService.submitCart(loggedInUser.email, userCart)
     res.json('done')
 })
  

@@ -8,7 +8,6 @@ export default function Signup(props) {
         ? '/api/'
         : '//localhost:3030/api/'
 
-
     const [credentials, setCredentials] = useState({
         userName: '',
         password: '',
@@ -19,6 +18,8 @@ export default function Signup(props) {
         userName: '',
         password: ''
     })
+
+    const [checkboxValue, setCheckboxValue] = useState(true)
 
     const handleChange = ({ target }) => {
         const field = target.name
@@ -38,18 +39,25 @@ export default function Signup(props) {
     }
 
     const doSignup = async () => {
-        const user = await axios.post(`${BASE_URL}api/user/signup`, credentials)
-        if (user.data) {
+        try {
+            const user = await axios.post(`${BASE_URL}user/signup`, credentials)
             await props.location.handleLogin(user.data)
             props.history.push('/CandyPage')
+        } catch(err) {
+            alert('Sorry, please try again later')
         }
     }
 
     const doLogin = async () => {
-        const user = await axios.post(`${BASE_URL}user/login`, loginCredentials)
-        if (user.data) {
+        try {
+            const user = await axios.post(`${BASE_URL}user/login`, loginCredentials)
             await props.location.handleLogin(user.data)
+            if(checkboxValue) localStorage.setItem('user', JSON.stringify(user.data))
             props.history.push('/CandyPage')
+
+        } catch(err) {
+            console.log(err)
+            alert('Wrong Username/Password')
         }
     }
 
@@ -84,6 +92,11 @@ export default function Signup(props) {
                 <label className="labal" htmlFor="password">Password</label>
                 <input placeholder="Password" type="password" id="Password" name="password" value={loginCredentials.password} onChange={handleLoginChange} />
                 <button onClick={doLogin} className="special-btn btn login-btn">Login</button>
+
+                <input checked={checkboxValue} onChange={() => setCheckboxValue(!checkboxValue)}
+                    className="checkmark" type="checkbox" id="remeber" name="remeber"
+                />
+                <label className="checkmark-lable" htmlFor="remeber">Remeber Me</label>
             </form>
         </div>
     )

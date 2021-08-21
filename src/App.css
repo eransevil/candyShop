@@ -243,22 +243,22 @@ a {
     outline: none;
 }
 
-.item-in-cart-image{
+.item-in-cart-image {
     width: 60px;
     height: 60px;
     border-radius: 15px;
 }
 
-td{
-    margin:10px;
+td {
+    margin: 10px;
     padding: 20px;
     font-family: sans-serif;
     font-size: 1.2rem;
     color: black;
 }
 
-th{
-    margin:10px;
+th {
+    margin: 10px;
     padding: 20px;
     font-family: sans-serif;
     font-size: 1.3rem;
@@ -268,15 +268,15 @@ th{
 
 
 
-.cart-container > * {
+.cart-container>* {
     justify-self: center;
     align-self: center;
 }
 
-.hello-msg{
+.hello-msg {
     margin-left: 20px;
     position: absolute;
-    right: 12px ;
+    right: 12px;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -285,29 +285,30 @@ th{
     /* width: 100%; */
 }
 
-.cart-container{
+.cart-container {
     background-color: rgb(228, 228, 228);
     width: 750px;
     text-align: center;
 }
 
-.cart-container > tr > td {
+.cart-container>tr>td {
     background-color: rgb(238, 235, 235);
     width: 250px;
 }
 
 
-.main-row-cart{
+.main-row-cart {
     background-color: lightcoral;
     /* width: 800px; */
 }
-.main-row-cart > th{
+
+.main-row-cart>th {
     background-color: lightcoral;
     width: 250px;
     /* width: 800px; */
 }
 
-.sum-section{
+.sum-section {
     display: flex;
     flex-direction: column;
     justify-self: flex-end;
@@ -320,19 +321,80 @@ th{
     font-size: 1.4rem;
 
 }
-.sum-section > *{
+
+.sum-section>* {
     text-align: left;
     margin-left: 97px;
     margin-top: 10px;
 
 }
-.sum-item{
+
+.sum-item {
     position: absolute;
     right: 100px
 }
 
-.pay-btn{
-    margin:0 auto;
-    text-align:center;
+.pay-btn {
+    margin: 0 auto;
+    text-align: center;
     margin-bottom: 10px;
+}
+
+.logs-title {
+    color: #1d1919;
+    font-family: 'Raleway', sans-serif;
+    font-size: 62px;
+    font-weight: 800;
+    line-height: 72px;
+    margin: 0 0 30px;
+    text-align: center;
+}
+.checkmark {
+height: 25px;
+width: 25px;
+background-color: #eee;
+cursor: pointer;
+margin-top: 4px;
+}
+
+.checkmark-lable{
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.logs-container{
+    /* height: 40px;
+    width: 200px; */
+    margin-top: 10px;
+    max-height: 245px;
+    overflow-y: scroll;
+}
+
+.readme-container{
+    display: flex;
+    font-size: 1.1rem;
+    font-weight: 500;
+    background-color: #fff;
+    padding: 40px 100px;
+}
+
+.route-info{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.inbal-section{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-inline-end: 25px;
+}
+.liron-section{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-inline-start: 25px;
+
 }
