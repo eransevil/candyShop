@@ -4,6 +4,7 @@ import Header from './cmps/Header'
 import Footer from './cmps/Footer'
 import CandyPage from './views/CandyPage'
 import Home from './views/Home'
+import Map from './views/Map'
 import Readme from './views/Readme'
 import Contact from './views/Contact'
 import Signup from './views/Signup'
@@ -56,9 +57,10 @@ function App() {
       <Router>
         <Header loggedInUser={loggedInUser} handleLogin={setLoggedInUser} />
         <Switch>
-          {<PrivateRoute loggedInUser={loggedInUser} component={Contact} path='/Contact#/' />}
+          {/* {<PrivateRoute loggedInUser={loggedInUser} component={Contact} path='/Contact#/' />} */}
           {<PrivateRoute loggedInUser={loggedInUser} exact component={Home} path='/' />}
           {<PrivateRoute loggedInUser={loggedInUser} exact component={Contact} path='/Contact' />}
+          {<PrivateRoute loggedInUser={loggedInUser} exact component={Map} path='/Map' />}
           {<PrivateRoute loggedInUser={loggedInUser} exact component={Readme} path='/Readme' />}
           {<Route path='/Cart' render={(props) => <Cart userCart={userCart} loggedInUser={loggedInUser} setUserCart={setUserCart} {...props} />} />}
           {<Route exact component={Signup} path='/Signup' />}
