@@ -1,16 +1,33 @@
 [
   {
-    "userName": "erans",
-    "email": "eransevil@gmail.com",
-    "isAdmin": true,
-    "password": "777",
-    "cart": []
-  },
-  {
     "userName": "inbals",
     "email": "inbalsevil@gmail.com",
+    "isAdmin": true,
+    "password": "777",
+    "cart": [
+      [
+        {
+          "name": "Skittles",
+          "price": 17,
+          "inStock": true,
+          "_id": "2pbMN",
+          "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReYZLnm_s5Cgsr85ICNYXwbnGpujhE4EG7-A&usqp=CAU"
+        },
+        {
+          "name": "Likrish",
+          "price": 77,
+          "inStock": true,
+          "_id": "1506",
+          "url": "https://smhttp-ssl-60529-live.nexcesscdn.net/pub/media/catalog/product/cache/4226787a49a240193bc173af0a49120d/r/e/red-licorice-twists.jpg"
+        }
+      ]
+    ]
+  },
+  {
+    "userName": "lironc",
+    "email": "lironc@gmail.com",
     "isAdmin": false,
-    "password": "888",
+    "password": "777",
     "cart": []
   }
 ]

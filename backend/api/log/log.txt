@@ -1,20 +1,2 @@
-erans  loggedOut at: 14/08/2021, 15:42:50||
-erans logged in at: 14/08/2021, 15:42:51||
-erans  loggedOut at: 14/08/2021, 15:42:53||
-erans logged in at: 14/08/2021, 15:42:54||
-erans logged in at: 20/08/2021, 12:32:38||
-erans logged in at: 20/08/2021, 12:52:02||erans logged in at: 21/08/2021, 12:30:24||
-erans logged in at: 21/08/2021, 12:41:05||
-erans logged in at: 21/08/2021, 12:50:50||
-erans logged in at: 21/08/2021, 12:55:30||
-erans logged in at: 21/08/2021, 12:59:07||
-erans logged in at: 21/08/2021, 13:02:31||
-erans logged in at: 21/08/2021, 13:04:32||
-erans logged in at: 21/08/2021, 13:05:57||
-erans logged in at: 21/08/2021, 13:06:16||
-erans logged in at: 21/08/2021, 13:06:18||
-erans  loggedOut at: 21/08/2021, 13:06:25||
-erans logged in at: 21/08/2021, 13:06:26||
-erans logged in at: 21/08/2021, 13:12:06||
-erans  loggedOut at: 21/08/2021, 13:12:27||
-erans logged in at: 21/08/2021, 13:12:37||
+inbals logged in at: 26/08/2021, 18:10:46||
+inbals  pay for the candies at: 26/08/2021, 18:10:59||
