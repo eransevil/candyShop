@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session')
 const cors = require('cors')
+const path = require('path')
 
 const candyRoutes = require ('./api/candy/candy.controller.js')
 const userRoutes = require ('./api/user/user.controller.js')
